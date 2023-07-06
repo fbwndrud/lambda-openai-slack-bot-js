@@ -1,0 +1,23 @@
+{
+  "name": "openai-slack-bot",
+  "version": "1.0.0",
+  "description": "A Slack bot using OpenAI and AWS DynamoDB",
+  "main": "handler.js",
+  "keywords": [
+    "slack",
+    "openai",
+    "aws",
+    "dynamodb",
+    "bot"
+  ],
+  "author": "Joungkyoung Lyoo",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^3.13.1",
+    "aws-sdk": "^2.1410.0",
+    "openai": "^3.3.0"
+  },
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^6.0.0"
+  }
+}

@@ -1,0 +1,43 @@
+service: lambda-openai-slack-bot-js
+provider:
+  name: aws
+  region: ap-northeast-2
+  runtime: nodejs18.x
+  # stage: dev
+  timeout: 29
+  environment:
+    DYNAMODB_TABLE_NAME: openai-slack-bot-context
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+        - "arn:aws:dynamodb:*:*:table/${self:provider.environment.DYNAMODB_TABLE_NAME}"
+functions:
+  mention:
+    handler: handler.handler
+    events:
+      - http:
+          method: post
+          path: /slack/events
+resources:
+  Resources:
+    DynamoDBTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE_NAME}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        TimeToLiveSpecification:
+          AttributeName: expire_at
+          Enabled: true
+
+plugins:
+  - serverless-dotenv-plugin
