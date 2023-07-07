@@ -15,7 +15,7 @@ $ npm install -g serverless
 First, clone this repository and install the dependencies:
 
 ```bash
-$ git clone <repository-url>
+$ git clone https://github.com/fbwndrud/lambda-openai-slack-bot-js.git
 $ cd lambda-openai-slack-bot-js
 $ npm install
 $ sls plugin install -n serverless-dotenv-plugin
