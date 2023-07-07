@@ -10,7 +10,7 @@
     "dynamodb",
     "bot"
   ],
-  "author": "Joungkyoung Lyoo",
+  "author": "author",
   "license": "ISC",
   "dependencies": {
     "@slack/bolt": "^3.13.1",
